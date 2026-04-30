@@ -1,6 +1,6 @@
 # Birthday Wish
 
-<h2>Run this once to get a basic idea of how things gonna look</h2>
+<h2>Run index.html once to get a basic idea of how things gonna look</h2>
 
  Wish your loved ones with a Bday website<br>
  index.html launches up in browser<br>
