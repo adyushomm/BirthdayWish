@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <title>QWERTY</title>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button-yes {
+            background-color: #ff69b4;
+        }
+
+        .button-yes:hover {
+            background-color: #ff4d7c;
+        }
+
+        .button-no {
+            background-color: #ff9900;
+        }
+
+        .button-no:hover {
+            background-color: #ff7a29;
+        }
+
+        #question {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 0px 0px 10px #ccc;
+        }
+
+        .love-you-too {
+            font-size: 48px;
+            color: #f60df2;
+            text-shadow: 0px 0px 20px #8d03f7;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+                color: #ff00ff;
+                text-shadow: 0px 0px 30px #e8e2e8;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fa0404;
+            clip-path: polygon(50% 0%, 62% 25%, 90% 55%, 68% 90%, 50% 75%, 32% 90%, 10% 55%, 38% 25%);
+            border-radius: 20%;
+            animation: falling-heart 7s linear infinite;
+        }
+
+        @keyframes falling-heart {
+
+
+            0% {
+                transform: translateY(-80vh) scaleY(-1);
+            }
+
+            100% {
+                transform: translateY(50vh) scaleY(-1);
+            }
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(to bottom, #4567b7, #6495ed);">
+    <h1 id="question" style="text-align: center;">Do you love me?</h1>
+    <img id="image" src="xyz.gif" alt="Love Question Image"
+        style="display: block; margin: 0 auto; width: 30%;"><br><br><br>
+
+    <div class="buttons" style="margin-bottom: 20px; text-align: center;">
+        <button id="yes-btn" class="button button-yes" style="margin-right: 40px;">Yes</button>
+        <button id="no-btn" class="button button-no">No</button>
+    </div>
+    <div id="response" style="text-align: center;"></div>
+    <div id="heart-container"></div>
+
+    <script>
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const question = document.getElementById('question');
+        const image = document.getElementById('image');
+        const responseDiv = document.getElementById('response');
+        const buttonsDiv = document.querySelector('.buttons');
+
+
+        yesBtn.addEventListener('click', () => {
+
+            createHearts(13);
+
+
+            question.innerHTML = '<span class="love-you-too">I love you tooo!</span>';
+            image.src = 'hug.gif';
+            responseDiv.innerHTML = '';
+            buttonsDiv.innerHTML = 'Tum hamesha best rahogee!';
+            buttonsDiv.style.fontSize = '24px';
+            buttonsDiv.style.fontWeight = 'bold';
+            buttonsDiv.style.color = 'red';
+            document.body.style.background = 'linear-gradient(to bottom, #ff99cc, #ffeecc)';
+
+        });
+
+        function createHearts(numHearts) {
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.top = Math.random() * window.innerHeight + 'px';
+                document.getElementById('heart-container').appendChild(heart);
+            }
+        }
+
+
+
+        noBtn.addEventListener('click', () => {
+            const x = Math.floor(Math.random() * window.innerWidth);
+            const y = Math.floor(Math.random() * window.innerHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+    </script>
+</body>
+
+</html>
